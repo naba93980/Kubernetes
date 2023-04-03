@@ -1,0 +1,22 @@
+command --help -> know details of any command
+
+
+minikube start -> starts minikube
+minikube status
+minikube node list
+minikube image ls
+
+
+kubectl get nodes -> details of nodes running
+kubectl get deployments -o wide -> List all pods in ps output format with more information
+kubectl version --output=json
+
+CRUD:-
+kubectl create/edit/delete deployment [name]
+
+Status of different k8s components:-
+kubectl get nodes|pods|services|deployments|replicatsets
+
+Debugging pods:- 
+kubectl logs [pod name]
+kubectl exec -it [pod name] --bin/bash
