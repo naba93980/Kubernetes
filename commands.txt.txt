@@ -1,6 +1,5 @@
 command --help -> know details of any command
 
-
 minikube start -> starts minikube
 minikube status
 minikube node list
@@ -11,12 +10,19 @@ kubectl get nodes -> details of nodes running
 kubectl version --output=json
 
 CRUD:-
-kubectl create/edit/delete deployment [name]
+kubectl create deployment [name] --image=[image name]
+kubectl edit deployment [name]
+kubectl delete deployment [name]
 
 Status of different k8s components:-
-kubectl get nodes|pod|services|deployment|replicatset
+kubectl get nodes | pod | services | deployment | replicatset
 kubectl get pods -o wide -> more details about pod
 
 Debugging pods:- 
-kubectl logs [pod name]
-kubectl exec -it [pod name] --bin/bash
+kubectl logs [pod name] -> Log to console
+kubectl exec -it [pod name] --bin/bash -> Get Interactive Terminal
+kubectl describe resource [resource name] -> get info about pod
+
+Use configuration file for CRUD:-
+kubectl apply -f [file name] -> apply a configuration file
+kubectl apply -f [file name] -> delete with configuration file
