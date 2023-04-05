@@ -16,7 +16,8 @@ kubectl delete deployment [name]
 
 Status of different k8s components:-
 kubectl get nodes | pod | services | deployment | replicatset
-kubectl get pods -o wide -> more details about pod
+kubectl get nodes | pod | services | deployment | replicatset -o wide -> more details
+kubectl get nodes | pod | services | deployment | replicatset -o yaml -> > file.txt -> put the output in file
 
 Debugging pods:- 
 kubectl logs [pod name] -> Log to console
@@ -25,4 +26,4 @@ kubectl describe resource [resource name] -> get info about resource
 
 Use configuration file for CRUD:-
 kubectl apply -f [file name] -> apply a configuration file
-kubectl delete -f [file name] -> delete with configuration file -> delete all pods created using the config file.
+kubectl delete -f [file name] -> delete with configuration file -> delete all components created using the config file.
