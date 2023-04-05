@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service  
+
+metadata:
+  name: mongodb-service
+  
+spec:
+  selector:
+    app: mongodb # match line 22 of deployment.yaml file
+  ports:
+  - port: 80
+    name: http
+    protocol: TCP
+    targetPort: 27017  # match line 34 of deployment.yaml file
