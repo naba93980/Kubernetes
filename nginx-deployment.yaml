@@ -12,7 +12,7 @@ spec: # spec for deployment
     matchLabels:
       app: nginx
 
-  template: # pod to be created
+  template: # blueprint for pod to be created
     metadata:
       labels:
         app: nginx

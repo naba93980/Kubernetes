@@ -21,8 +21,8 @@ kubectl get pods -o wide -> more details about pod
 Debugging pods:- 
 kubectl logs [pod name] -> Log to console
 kubectl exec -it [pod name] --bin/bash -> Get Interactive Terminal
-kubectl describe resource [resource name] -> get info about pod
+kubectl describe resource [resource name] -> get info about resource
 
 Use configuration file for CRUD:-
 kubectl apply -f [file name] -> apply a configuration file
-kubectl apply -f [file name] -> delete with configuration file
+kubectl delete -f [file name] -> delete with configuration file -> delete all pods created using the config file.
