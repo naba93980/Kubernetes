@@ -1,0 +1,56 @@
+# configurations for deployment   
+apiVersion: apps/v1
+kind: Deployment
+
+# details for deployment - 1
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+
+# blueprint for deployment - 2
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongodb   # match line 22
+       
+  # configurations for pods    
+  # details for pods
+  template:
+    metadata:
+      labels:
+        app: mongodb
+
+    # blueprint for pods
+    spec:
+      containers:
+      - name: mongodb-container
+        image: mongo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 27107
+
+# status of pod - added automatically by k8s - 3
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-04-03T11:30:30Z"
+    lastUpdateTime: "2023-04-03T11:30:30Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-04-03T11:30:20Z"
+    lastUpdateTime: "2023-04-03T14:30:40Z"
+    message: ReplicaSet "redis-deployment-6dbf859549" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1
