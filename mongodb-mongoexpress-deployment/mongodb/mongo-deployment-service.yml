@@ -32,3 +32,19 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+
+--- 
+
+apiVersion: v1
+kind: Service  
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    app: mongodb # match line 13
+  ports:
+  - port: 27017
+    protocol: TCP
+    targetPort: 27017  # match line 19
+
+
