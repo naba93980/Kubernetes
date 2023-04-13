@@ -27,3 +27,5 @@ kubectl describe resource [resource name] -> get info about resource
 Use configuration file for CRUD:-
 kubectl apply -f [file name] -> apply a configuration file
 kubectl delete -f [file name] -> delete with configuration file -> delete all components created using the config file.
+
+ minikube service external-service-name -> to get ip adress of minikube

@@ -1,0 +1,14 @@
+2 deployments/pods - 1 mongodb pod and 1 mongo-express pod
+2 service  - 1 internal service to access mongodb & 1 external service to connect to mongo-express
+
+For mongo-express to connect to mongodb
+1 configMap - DB url 
+1 secret - DB username and password
+
+
+external URL - IP adress of Node
+                      - Port of extenal Service (eg. Node Port)
+
+Flow : -
+
+    request from browser -> mongo-express external service -> mongo-express pod (uses configMap) -> mongodb internal service -> mongodb pod (uses Secret)
