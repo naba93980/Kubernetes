@@ -28,4 +28,8 @@ Use configuration file for CRUD:-
 kubectl apply -f [file name] -> apply a configuration file
 kubectl delete -f [file name] -> delete with configuration file -> delete all components created using the config file.
 
- minikube service external-service-name -> to get ip adress of minikube
+minikube service external-service-name -> to get ip adress of minikube
+
+browser 127.0.0.1:xxxxx -> minkube nodeport 192.168.49.2:30001 -> external mongo-express service (type Load balancer here) 10.99.115.212:80 -> mongo-express pod 10.244.0.117:8081 -> internal mongodb-service 10.107.124.105:27017 -> mongodb pod 10.244.0.119:27017
+
+minikube ssh -> starts terminal in /home/docker directory in minikube
