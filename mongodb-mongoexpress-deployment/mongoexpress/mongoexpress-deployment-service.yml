@@ -15,7 +15,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: mongo-express
-        image: mongo-express:0.42
+        image: mongo-express:latest
         ports:
         - containerPort: 8081
         env:
@@ -38,8 +38,8 @@ spec:
             value: "true"
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "800m"
 
 --- 
 

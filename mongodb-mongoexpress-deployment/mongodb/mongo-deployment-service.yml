@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mongodb-deployment
+  labels:
+    app: mongodb-app
 spec:
   replicas: 2
   selector:
@@ -30,8 +32,8 @@ spec:
                 key: mongo-root-password   
         resources:
           limits:
-            memory: "128Mi"
-            cpu: "500m"
+            memory: "512Mi"
+            cpu: "800m"
 
 --- 
 
@@ -41,10 +43,10 @@ metadata:
   name: mongodb-service
 spec:
   selector:
-    app: mongodb # match line 13
+    app: mongodb # match line 15
   ports:
   - port: 27017
     protocol: TCP
-    targetPort: 27017  # match line 19
+    targetPort: 27017  # match line 21
 
 

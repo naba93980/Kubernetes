@@ -27,3 +27,17 @@ ReplicaSets are commonly used to ensure high availability and fault tolerance in
 They can also be used to manage rolling updates and scaling of pods. 
 In general, ReplicaSets are a crucial component of Kubernetes as they enable the management 
 and scaling of containerized applications in a distributed environment.
+
+---------------------------------------------------------------------------------------------------
+Example Scenario
+Nodes and Subnets:
+
+Node 1 has a NIC with IP 10.0.0.5 (from Subnet 1: 10.0.0.0/19).
+Node 2 has a NIC with IP 10.0.32.5 (from Subnet 2: 10.0.32.0/19).
+Pod Communication:
+
+Pod A on Node 1 (with IP 10.0.0.51) wants to communicate with Pod B on Node 2 (with IP 10.0.32.48).
+Pod A sends a request to the ClusterIP service (e.g., 10.100.0.1).
+kube-proxy on Node 1 intercepts the request and determines that Pod B is the destination.
+The request is then routed through the NIC IP of Node 1 (10.0.0.5), travels across the network infrastructure, and reaches the NIC IP of Node 2 (10.0.32.5).
+Node 2's kube-proxy then routes the request to Pod B.

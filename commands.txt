@@ -4,6 +4,8 @@ minikube start -> starts minikube
 minikube status
 minikube node list
 minikube image ls
+minikube dashboard
+minikube ip
 
 kubectl get all
 kubectl get nodes -> details of nodes running
@@ -33,3 +35,10 @@ minikube service external-service-name -> to get ip adress of minikube
 browser 127.0.0.1:xxxxx -> minkube nodeport 192.168.49.2:30001 -> external mongo-express service (type Load balancer here) 10.99.115.212:80 -> mongo-express pod 10.244.0.117:8081 -> internal mongodb-service 10.107.124.105:27017 -> mongodb pod 10.244.0.119:27017
 
 minikube ssh -> starts terminal in /home/docker directory in minikube
+
+minikube service loadbalancerservice -> assigns ip to the external nodeport/loadBalancer service
+
+kubectl get namespace
+kubectl cluster-info -> gives all info from kube-public namespace
+
+kubectl api-resources --namespaced=false -> gonna list all namespaced resources
