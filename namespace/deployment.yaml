@@ -1,0 +1,37 @@
+# configurations for deployment   
+apiVersion: apps/v1
+kind: Deployment
+
+# details for deployment - 1
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+  namespace: mongodb-namespace
+
+# blueprint for deployment - 2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb   # match line 22
+       
+  # configurations for pods    
+  # details for pods
+  template:
+    metadata:
+      labels:
+        app: mongodb
+
+    # blueprint for pods
+    spec:
+      containers:
+      - name: mongodb-container
+        image: mongo
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 27107
+

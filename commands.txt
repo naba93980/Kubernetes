@@ -42,3 +42,16 @@ kubectl get namespace
 kubectl cluster-info -> gives all info from kube-public namespace
 
 kubectl api-resources --namespaced=false -> gonna list all namespaced resources
+
+
+kubectl config get-clusters  -> gives name of all cluster present 
+kubectl config view -o=jsonpath='{.clusters[*].name}'
+Kubectl config get-contexts
+Kubectl config current-context
+kubectl config use-context <context-name>
+
+kubectl get namespaces
+kubectl config set-context --current --namespace=<namespace-name>
+
+
+
