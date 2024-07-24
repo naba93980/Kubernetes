@@ -6,10 +6,12 @@ minikube node list
 minikube image ls
 minikube dashboard
 minikube ip
+minikube addons enable ADDON_NAME (eg. ingress)
 
 kubectl get all
 kubectl get nodes -> details of nodes running
 kubectl version --output=json
+kubectl get resource --watch -> watch live the resource
 
 CRUD:-
 kubectl create deployment [name] --image=[image name]
@@ -20,6 +22,8 @@ Status of different k8s components:-
 kubectl get nodes | pod | services | deployment | replicatset
 kubectl get nodes | pod | services | deployment | replicatset -o wide -> more details
 kubectl get nodes | pod | services | deployment | replicatset -o yaml -> > file.txt -> put the output in file
+kubectl get ingress
+kubectl get namespaces
 
 Debugging pods:- 
 kubectl logs [pod name] -> Log to console
@@ -49,9 +53,9 @@ kubectl config view -o=jsonpath='{.clusters[*].name}'
 Kubectl config get-contexts
 Kubectl config current-context
 kubectl config use-context <context-name>
-
-kubectl get namespaces
 kubectl config set-context --current --namespace=<namespace-name>
+
+
 
 
 
