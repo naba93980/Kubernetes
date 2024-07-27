@@ -16,6 +16,9 @@ spec:
       containers:
       - name: mongo-express
         image: mongo-express:latest
+        volumeMounts:
+          - name: mongo-express-volume-configmap
+            mountPath: /var/lib/mongo-express
         ports:
         - containerPort: 8081
         env:
@@ -40,7 +43,10 @@ spec:
           limits:
             memory: "512Mi"
             cpu: "800m"
-
+      volumes:
+      - name: mongo-express-volume-configmap
+        configMap:
+          name: mongodb-configmap
 --- 
 
 apiVersion: v1
