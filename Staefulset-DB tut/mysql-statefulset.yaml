@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mysql
+  namespace: mysql-demo
+spec:                           # satefulset starts here
+  serviceName: "mysql"
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mysql
+  template:                     # pod starts here
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:               #container starts here
+        - name: mysql
+          image: mysql:8.0
+          ports:
+            - containerPort: 3306
+              name: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: rootpass  # In real production, use a Secret!
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+            - name: config-volume
+              mountPath: /etc/mysql/conf.d
+      volumes:                  # volume is a resources of pod which is mounted by container at line 29 just above
+        - name: config-volume
+          configMap:
+            name: mysql-config
+  volumeClaimTemplates:         # pvc starts here, statefulset have pvc, that is all pods claim pvc through volumeMounts in their container
+    - metadata:
+        name: mysql-persistent-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
