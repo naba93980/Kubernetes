@@ -1,0 +1,23 @@
+Helm commands:
+
+helm repo add <repo-name> <repo-url>: Add a new chart repository.
+
+helm repo update: Update your local repo cache.
+
+helm search repo <chart-name>: Search for charts in your added repositories.
+
+helm install <release-name> <chart> [flags]: Install a chart as a new release.
+
+helm list: List installed releases.
+
+helm upgrade <release-name> <chart> [flags]: Upgrade an existing release.
+
+helm uninstall <release-name>: Uninstall a release.
+
+helm get all <release-name>: Get all information about a release.
+
+helm sync
+
+helm template
+
+

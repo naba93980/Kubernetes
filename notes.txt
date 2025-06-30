@@ -41,3 +41,49 @@ Pod A sends a request to the ClusterIP service (e.g., 10.100.0.1).
 kube-proxy on Node 1 intercepts the request and determines that Pod B is the destination.
 The request is then routed through the NIC IP of Node 1 (10.0.0.5), travels across the network infrastructure, and reaches the NIC IP of Node 2 (10.0.32.5).
 Node 2's kube-proxy then routes the request to Pod B.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 Cluster-wide (non-namespaced) resources
+Examples:
+
+nodes, persistentvolumes, namespaces, clusterroles, customresourcedefinitions, etc.
+
+➡️ These are not bound to any namespace.
+➡️ They can be accessed by a ClusterRole with appropriate permissions.
+➡️ The namespace set in the context (whether it's the default namespace or a custom one) does not affect visibility or access to these resources.
+
+The only thing that matters is:
+
+❗ Whether the user/group/service account in that context is bound to a ClusterRole (via a ClusterRoleBinding).
+
+🔸 Namespaced resources
+Examples:
+
+pods, services, configmaps, secrets, deployments, etc.
+
+➡️ These live inside namespaces.
+➡️ If your context is tied to a specific namespace, kubectl commands without -n will act only on that namespace.
+➡️ To access resources in other namespaces, you'd either:
+
+Switch context or namespace with kubectl config set-context
+
+Explicitly use -n other-namespace
+
+And access is only possible if:
+
+❗ The user/group/service account has the right RoleBinding or ClusterRoleBinding for that namespace or resource.
+
+
